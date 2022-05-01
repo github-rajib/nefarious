@@ -1,0 +1,45 @@
+<div class="alert alert-success col-12 mt-3" *ngIf="results.length == 0">
+  You have everything you've ever wanted. Nice
+</div>
+
+<div class="card" *ngIf="results.length">
+  <div class="card-header">
+    You want these
+    <span *ngIf="mediaType == 'tv'">TV Shows</span>
+    <span *ngIf="mediaType == 'movie'">Movies</span>
+  </div>
+  <div class="card-body">
+    <div class="d-flex justify-content-end">
+      <input class="form-control form-control-sm w-25 mb-3" [(ngModel)]="search" required minlength="2" type="text" placeholder="Filter..." autocomplete="off">
+    </div>
+
+    <!-- datatable -->
+    <ngx-datatable
+      class="bootstrap"
+      [rows]="rows"
+      [columnMode]="ColumnMode.force"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      [rowHeight]="50"
+      [scrollbarH]="true"
+      [limit]="25"
+    >
+      <!-- columns -->
+      <ngx-datatable-column name="Name">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <a [routerLink]="['/media', mediaType, getTMDBId(row)]">{{ row.name }}</a>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Release Date" prop="release_date"></ngx-datatable-column>
+      <ngx-datatable-column name="Date Requested" prop="date_added"></ngx-datatable-column>
+      <ngx-datatable-column name="Requested By" prop="requested_by"></ngx-datatable-column>
+      <ngx-datatable-column name="Last Attempt" prop="last_attempt_date"></ngx-datatable-column>
+      <ngx-datatable-column prop="transmission_torrent_hash" name="Torrent Found">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          <span *ngIf="value" class="oi oi-check text-success"></span>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+
+  </div>
+</div>

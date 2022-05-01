@@ -1,0 +1,45 @@
+// bootstrap theme variables - necessary to reference variables below
+@import "~bootswatch/dist/solar/variables";
+
+// iconic icons
+@import "~@icon/open-iconic/open-iconic.css";
+
+// toastr
+@import '~ngx-toastr/toastr.css';
+
+// loading spinner
+@import "loading-spinner";
+
+// bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+//
+// global
+//
+
+// better contrast
+.media-results.card-body {
+  color: $light;
+}
+
+//
+// ngx-datatable
+//
+
+@import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/assets/icons.css';
+@import '~@swimlane/ngx-datatable/themes/bootstrap.css';
+
+// text color
+.datatable-header-cell, .datatable-body-cell, .datatable-body-cell a {
+  color: $light;
+}
+
+// even rows
+.datatable-row-even .datatable-body-cell, .datatable-row-even .datatable-body-cell a {
+  background-color: $gray-800;
+}
+// odd rows
+.datatable-row-odd .datatable-body-cell, .datatable-row-odd .datatable-body-cell a {
+  background-color: $gray-900;
+}
